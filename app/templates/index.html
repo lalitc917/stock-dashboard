@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stock Performance Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 10px;
+        }
+
+        .stock {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .positive {
+            color: green;
+            font-weight: bold;
+        }
+
+        .negative {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 Stock Performance Dashboard</h1>
+
+    <div class="section">
+
+        <h2>🚀 Top Performing Stocks</h2>
+
+        {% for stock in top_performers %}
+
+        <div class="stock">
+
+            <span>{{ stock.name }}</span>
+
+            <span>₹{{ stock.price }}</span>
+
+            <span class="positive">
+                +{{ stock.change }}%
+            </span>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+
+    <div class="section">
+
+        <h2>📉 Worst Performing Stocks</h2>
+
+        {% for stock in worst_performers %}
+
+        <div class="stock">
+
+            <span>{{ stock.name }}</span>
+
+            <span>₹{{ stock.price }}</span>
+
+            <span class="negative">
+                {{ stock.change }}%
+            </span>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
