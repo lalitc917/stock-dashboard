@@ -6,7 +6,14 @@ pool:
 
 steps:
 
-
+- script: |
+    echo Checking Python installation
+    where python
+    python --version
+    where pip
+    pip --version
+  displayName: 'Check Python on agent'
+  
 - script: |
     python -m pip install --upgrade pip
     pip install -r app/requirements.txt
