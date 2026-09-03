@@ -1,0 +1,21 @@
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
+
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.12'
+  displayName: 'Use Python 3.12'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r app/requirements.txt
+  displayName: 'Install Python dependencies'
+
+- script: |
+    python -m pytest
+  displayName: 'Run automated tests'
